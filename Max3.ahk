@@ -24,17 +24,22 @@ RegRead, H, HKEY_CURRENT_USER, SOFTWARE\Mario Studio\Mario's Max3, H
 if ErrorLevel
   H = 640
 
-Gui, Add, Text, , To setup with the moinitor you want to split, move this window to the target monitor.
-Gui, Add, Text, , Then press OK.
-Gui, Add, Button, x+400 w60 Default, OK
+Gui, Add, Text, x12 y12 w460, To setup with the moinitor you want to split, move this window to the target monitor. Then press OK.
+Gui, Add, Button, x420 y48 w60 h30 Default, OK
 Gui, +MaximizeBox
 
+RegRead, FirstRun, HKEY_CURRENT_USER, SOFTWARE\Mario Studio\Mario's Max3, FirstRun
+if ErrorLevel {
+  FormatTime, FirstRun, , yyyy/M/d HH:mm:ss
+  RegWrite, REG_SZ, HKEY_CURRENT_USER, SOFTWARE\Mario Studio\Mario's Max3, FirstRun, %FirstRun%
+  GoSub, SetupHandler
+}
+
 Gui, About: New, , About Mario's Max3
-Gui, About:Add, Text, , This is a handy tool for you to vertically split a monitor into three.
-Gui, About:Add, Text, , Use the hotkeys Win + Numpad8, Win + Numpad5 and Win + Numpad2 to place
-Gui, About:Add, Text, , your active window to one of the three parts in your target monitor.
-Gui, About:Add, Text, , Hotkeys Win + Numpad4 and Win + Numpad6 are used for maximization.
-Gui, About:Add, Text, , Copyright Mario Studio, all rights reserved ; ©
+Gui, About: Add, Text, x12 y12, This is a handy tool for you to vertically split a monitor into three.
+Gui, About: Add, Text, x12 y36 w480, Use the hotkeys Win + Numpad 8`, Win + Numpad 5 and Win + Numpad 2 to place your active window to one of the three parts in your target monitor.
+Gui, About: Add, Text, x12 y72 w480, Hotkeys Win + Numpad 4 and Win + Numpad 6 are used for maximization.
+Gui, About: Add, Text, x12 y108, Copyright Mario Studio`, all rights reserved.
 
 Menu, Tray, Tip, Mario's Max3
 Menu, Tray, NoStandard
