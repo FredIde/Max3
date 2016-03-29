@@ -28,6 +28,18 @@ There's a charged tool called MaxTo. Max3 is simple but open sourced. And it spl
 
 Max3 is written in [AutoHotkey](http://www.autohotkey.com) script. If you want to customize Max3, such as to change the hotkeys or to alter the position parameters, you should first go to AutoHotkey official site to have some common concepts of AutoHotKey. Then read and modify the source script to make it your own.
 
+## Virus alert?
+
+According to [virustotal](https://www.virustotal.com/en/file/b962aff3231128d44e61e9592416f98fe03131cf1656aba43789f927a658da92/analysis/1459231849/), 4 out of 56 antivirus programs reported Max3.exe as devil. If you suspect it, please compile your onw excutable with AutoHotkey. Since the original binary file of AutoHotkey hasn't the SysTray menu icons, please remove all the icon statements in the script.
+
+The statements look like this:
+
+```
+  Menu, Tray, Icon, 1&, %A_ScriptFullPath%, -997, 64
+```
+
+Otherwise, icons can be added to your compiled executable by using a utility such as [Resource Hacker](http://angusj.com/resourcehacker/) (freeware) to edit it.
+
 ## License
 
 MIT
