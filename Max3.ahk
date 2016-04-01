@@ -1,4 +1,8 @@
 #SingleInstance force
+#NoEnv
+
+SendMode Input
+SetRegView 64
 
 RegRead, X, HKEY_CURRENT_USER, SOFTWARE\Mario Studio\Mario's Max3, X
 if ErrorLevel
@@ -23,6 +27,18 @@ if ErrorLevel
 RegRead, H, HKEY_CURRENT_USER, SOFTWARE\Mario Studio\Mario's Max3, H
 if ErrorLevel
   H = 640
+
+RegRead, gitPath, HKEY_LOCAL_MACHINE, SOFTWARE\GitForWindows, InstallPath
+If ErrorLevel
+  Hotkey, ^T, Off
+Else
+  gitBash := gitPath . "\git-bash.exe"
+
+RegRead, ahkPath, HKEY_LOCAL_MACHINE, SOFTWARE\AutoHotkey, InstallDir
+If ErrorLevel
+  Hotkey, #A, Off
+Else
+  ahkHelp := ahkPath . "\AutoHotkey.chm"
 
 Gui, Add, Text, x12 y12 w460, To setup with the moinitor you want to split, move this window to the target monitor. Then press OK.
 Gui, Add, Button, x420 y48 w60 h30 Default, OK
@@ -54,6 +70,7 @@ Menu, Tray, Add
 Menu, Tray, Add, Exit, ExitHandler
 If %A_IsCompiled%
   Menu, Tray, Icon, 4&, %A_ScriptFullPath%, -999, 64
+
 Return
 
 ButtonOK:
@@ -119,4 +136,23 @@ Return
   WinRestore, A
   WinMove, A, , X, Y0
   WinMaximize, A
+Return
+
+#A::
+  IfWinNotExist, AutoHotkey Help
+    Run, %ahkHelp%
+  Else
+    WinActivate
+Return
+
+^T::
+  WinGetTitle, title, A
+  IfEqual, title, MINGW64:/, Return
+  IfInString, title, MINGW64:/
+  {
+    Run, %gitBash%, %gitPath%
+    WinWaitActive, MINGW64:/
+    cmd := "cd " . SubStr(title, 9) . "`n"
+    Send, %cmd%
+  }
 Return

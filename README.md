@@ -30,7 +30,7 @@ Max3 is written in [AutoHotkey](http://www.autohotkey.com) script. If you want t
 
 ## Virus alert?
 
-According to [virustotal](https://www.virustotal.com/en/file/b962aff3231128d44e61e9592416f98fe03131cf1656aba43789f927a658da92/analysis/1459231849/), 4 out of 56 antivirus programs reported Max3.exe as devil. If you suspect it, please compile your onw excutable with AutoHotkey. Since the original binary file of AutoHotkey hasn't the SysTray menu icons, please remove all the icon statements in the script.
+According to [virustotal](https://www.virustotal.com/en/file/fc00c1584c4371e9331a19a5795600178a85236e88e9974aeca87aeaba637a2c/analysis/1459478515/), 4 out of 56 antivirus programs reported Max3.exe as devil. If you suspect it, please compile your own excutable with AutoHotkey. Since the original binary file of AutoHotkey hasn't the sepcified SysTray menu icons, please remove all the icon statements in the script.
 
 The statements look like this:
 
@@ -39,6 +39,11 @@ The statements look like this:
 ```
 
 Otherwise, icons can be added to your compiled executable by using a utility such as [Resource Hacker](http://angusj.com/resourcehacker/) (freeware) to edit it.
+
+## Misc
+
+* Ctrl+T for Git Bash if it's installed. When hit Ctrl+T in a Git Bash window which is __not__ in the / folder, a new Git Bash window will be opened and switched to the same path.
+* Win+A for AutoHotkey Help if AutoHotkey is installed.
 
 ## License
 
