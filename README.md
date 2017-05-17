@@ -28,7 +28,7 @@ There's a charged tool called MaxTo. Max3 is simple but open sourced. And it spl
 
 Max3 is written in [AutoHotkey](http://www.autohotkey.com) script. If you want to customize Max3, such as to change the hotkeys or to alter the position parameters, you should first go to AutoHotkey official site to have some common concepts of AutoHotKey. Then read and modify the source script to make it your own.
 
-Some explaination for the script:
+Some explanation for the script:
 
 * X, Y0, Y1, Y2, W, H
   
